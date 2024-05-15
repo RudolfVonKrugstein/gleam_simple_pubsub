@@ -1,21 +1,50 @@
-# pubsub
+# Simple PubSub for gleam
 
-[![Package Version](https://img.shields.io/hexpm/v/pubsub)](https://hex.pm/packages/pubsub)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/pubsub/)
+Simple PubSub for gleam, based on
+[process groups](https://hex.pm/packages/process_groups).
+
+[![Package Version](https://img.shields.io/hexpm/v/pubsub)](https://hex.pm/packages/simple_pubsub)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/simple_pubsub/)
+
+## Usage
+
+Not on Hex Doc yet, so you have to clone it and add a path dependency.
 
 ```sh
-gleam add pubsub
+gleam add simple_pubsub
 ```
+
+And use it in your project
+
+## Example
+
 ```gleam
-import pubsub
+import simple_pubsub as ps
+import process_groups
+import gleam/erlang/process
+
+// Messages we want to send over the PubSub
+type PubSubMessage{
+    PubSubMessage
+}
 
 pub fn main() {
-  // TODO: An example of the project in use
+    // start process groups, needed for pubsub
+    process_groups.start_link()
+
+    // create a pubsub
+    let pubsub = ps.new_pubsub()
+
+    // subscribe, normally you would subscribe another process than this one
+    let subscription = ps.subscribe(pubsub, process.self())
+
+    // broadcast a message
+    ps.broadcast(pubsub, PubSubMessage)
+
+    // receive the message
+    let assert Ok(PubSubMessage) = ps.receive(subscription, 100)
 }
 ```
-
-Further documentation can be found at <https://hexdocs.pm/pubsub>.
-
 ## Development
 
 ```sh
