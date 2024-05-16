@@ -8,7 +8,7 @@ Simple PubSub for gleam, based on
 
 ## Usage
 
-Not on Hex Doc yet, so you have to clone it and add a path dependency.
+Add this  library to your Gleam project
 
 ```sh
 gleam add simple_pubsub
