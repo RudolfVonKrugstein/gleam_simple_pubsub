@@ -1,8 +1,8 @@
 import gleam/dynamic
+import processgroups as pg
 import gleam/erlang
 import gleam/erlang/process
 import gleam/list
-import process_groups as pg
 
 /// A pubsub, where process can subscribe and anyone can broadcast
 pub type PubSub(message) {

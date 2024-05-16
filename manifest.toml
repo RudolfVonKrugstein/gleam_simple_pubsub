@@ -6,7 +6,9 @@ packages = [
   { name = "gleam_otp", version = "0.10.0", build_tools = ["gleam"], requirements = ["gleam_erlang", "gleam_stdlib"], otp_app = "gleam_otp", source = "hex", outer_checksum = "0B04FE915ACECE539B317F9652CAADBBC0F000184D586AAAF2D94C100945D72B" },
   { name = "gleam_stdlib", version = "0.37.0", build_tools = ["gleam"], requirements = [], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "5398BD6C2ABA17338F676F42F404B9B7BABE1C8DC7380031ACB05BBE1BCF3742" },
   { name = "gleeunit", version = "1.1.2", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleeunit", source = "hex", outer_checksum = "72CDC3D3F719478F26C4E2C5FED3E657AC81EC14A47D2D2DEBB8693CA3220C3B" },
-  { name = "process_groups", version = "1.0.0", build_tools = ["gleam"], requirements = ["gleam_erlang", "gleam_stdlib"], source = "local", path = "../gleam_process_groups" },
+  { name = "mug", version = "1.0.0", build_tools = ["gleam"], requirements = ["gleam_erlang", "gleam_stdlib"], otp_app = "mug", source = "hex", outer_checksum = "43DD17415C8E3DF403A1BD48AEFA81A80EA0BD54311B1CD16C4EFF1D3B4D4419" },
+  { name = "processgroups", version = "0.1.3", build_tools = ["gleam"], requirements = ["gleam_erlang", "gleam_stdlib"], otp_app = "processgroups", source = "hex", outer_checksum = "A7C9092A6650EA923D2F110703A5DA16D6E5BE1FD8AC608517DC9420B43A461C" },
+  { name = "radish", version = "0.15.0", build_tools = ["gleam"], requirements = ["gleam_erlang", "gleam_otp", "gleam_stdlib", "mug"], otp_app = "radish", source = "hex", outer_checksum = "57A18EAFA32D792669823F5C8B7514FDFBF143A2ACF514EE3BD6D54DCC893D1B" },
 ]
 
 [requirements]
@@ -14,4 +16,5 @@ gleam_erlang = { version = ">= 0.25.0 and < 1.0.0" }
 gleam_otp = { version = ">= 0.10.0 and < 1.0.0" }
 gleam_stdlib = { version = ">= 0.34.0 and < 2.0.0" }
 gleeunit = { version = ">= 1.0.0 and < 2.0.0" }
-process_groups = { path = "../gleam_process_groups" }
+processgroups = { version = ">= 0.1.3 and < 1.0.0"}
+radish = { version = ">= 0.15.0 and < 1.0.0" }
