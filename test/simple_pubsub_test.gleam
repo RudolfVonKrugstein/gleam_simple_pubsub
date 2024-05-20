@@ -35,27 +35,24 @@ pub fn send_receive_multiple_test() {
   let #(monitor, _) = ps.monitor(pubsub)
   let tasks =
     iterator.range(1, 10)
-    |> iterator.map(
-      fn(
-        _,
-        // start the task
-      ) {
-        let task =
-          task.async(fn() {
-            ps.subscribe(pubsub, process.self()) |> ps.receive(100)
-          })
-        // wait for it to register
-        let _ =
-          pg.selecting_process_group_monitor(
-            process.new_selector(),
-            monitor,
-            fn(a) { a.pids },
-          )
-          |> process.select(100)
-        // return the task
-        task
-      },
-    )
+    |> iterator.map(fn(_) {
+      // start the task
+      let task =
+        task.async(fn() {
+          ps.subscribe(pubsub, process.self())
+          |> ps.receive(100)
+        })
+      // wait for it to register
+      let _ =
+        pg.selecting_process_group_monitor(
+          process.new_selector(),
+          monitor,
+          fn(a) { a.pids },
+        )
+        |> process.select(100)
+      // return the task
+      task
+    })
     |> iterator.to_list
 
   // act
