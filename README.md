@@ -3,7 +3,7 @@
 Simple PubSub for gleam, based on
 [process groups](https://hex.pm/packages/process_groups).
 
-[![Package Version](https://img.shields.io/hexpm/v/pubsub)](https://hex.pm/packages/simple_pubsub)
+[![Package Version](https://img.shields.io/hexpm/v/simple_pubsub)](https://hex.pm/packages/simple_pubsub)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/simple_pubsub/)
 
 ## Usage
