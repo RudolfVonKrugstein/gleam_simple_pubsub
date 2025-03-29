@@ -1,5 +1,5 @@
 name = "simple_pubsub"
-version = "0.1.0"
+version = "0.1.1"
 description = "Simple pubsub (publish-subscribe) system for gleam based on process groups"
 licences = ["Apache-2.0"]
 repository = { type = "github", user = "RudolfVonKrugstein", repo = "gleam_simple_pubsub" }
