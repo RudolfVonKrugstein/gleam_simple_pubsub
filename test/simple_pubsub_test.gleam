@@ -1,5 +1,4 @@
 import gleam/erlang/process
-import gleam/iterator
 import gleam/list
 import gleam/otp/task
 import gleeunit
@@ -34,8 +33,8 @@ pub fn send_receive_multiple_test() {
   let pubsub = ps.new_pubsub()
   let #(monitor, _) = ps.monitor(pubsub)
   let tasks =
-    iterator.range(1, 10)
-    |> iterator.map(fn(_) {
+    list.range(1, 10)
+    |> list.map(fn(_) {
       // start the task
       let task =
         task.async(fn() {
@@ -53,7 +52,6 @@ pub fn send_receive_multiple_test() {
       // return the task
       task
     })
-    |> iterator.to_list
 
   // act
   ps.broadcast(pubsub, PubSubMessage)
@@ -67,8 +65,7 @@ pub fn send_receive_multiple_test() {
   // test
   should.equal(
     res,
-    iterator.range(1, 10)
-      |> iterator.map(fn(_) { PubSubMessage })
-      |> iterator.to_list,
+    list.range(1, 10)
+      |> list.map(fn(_) { PubSubMessage }),
   )
 }
