@@ -4,6 +4,9 @@ import gleam/erlang/process
 import gleam/list
 import processgroups as pg
 
+@external(erlang, "gleam_stdlib", "identity")
+fn unsafe_coerce(a: dynamic.Dynamic) -> a
+
 /// A pubsub, where process can subscribe and anyone can broadcast
 pub type PubSub(message) {
   PubSub(tag: erlang.Reference)
@@ -67,7 +70,7 @@ pub fn selecting_pubsub_subject(
 ) -> process.Selector(payload) {
   process.selecting_record2(selector, subject.pubsub.tag, fn(d) {
     d
-    |> dynamic.unsafe_coerce
+    |> unsafe_coerce
     |> handler
   })
 }
